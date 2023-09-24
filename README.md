@@ -12,5 +12,5 @@ This repository uses [pre-commit](https://pre-commit.com) for format validation.
 To run the unit tests you should run the following command:
 
 ```
-pre-commit install
+ceedling
 ```
