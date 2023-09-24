@@ -67,14 +67,17 @@
 
 // 01) When starting the driver, all LEDs should be off.
 void test_all_leds_start_off(void) {
-    uint16_t port = 0xFFFF; // Memory address
 
-    LEDS_Init(&port); // Initialize LEDs
+    /* Define virtual memory address */
+    uint16_t virtual_port = 0xFFFF;
 
-    TEST_ASSERT_EQUAL(0, port); // LEDs should be all off
+    /* Initialize LEDs */
+    LEDS_Init(&virtual_port);
+
+    /* Test if LEDs are off */
+    TEST_ASSERT_EQUAL(0, virtual_port);
 }
 
-// 02) With all LEDs off, it must be possible to turn on a certain LED.
 // 03) It must be possible to turn off a lit LED.
 // 04) It must be possible to turn an LED on and off with some LEDs already on and others already
 // off. 05) It must be possible to query the status of a lit LED. 06) It must be possible to query
