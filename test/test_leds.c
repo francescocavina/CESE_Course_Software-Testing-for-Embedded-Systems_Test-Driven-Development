@@ -178,10 +178,23 @@ void test_query_state_of_lit_LED(void) {
     TEST_ASSERT_EQUAL(1, led_state);
 }
 
-// //06) It must be possible to query the status of an off LED.
-// void test_6() {
+// 06) It must be possible to query the status of an off LED.
+void test_query_state_of_off_LED() {
 
-// }
+    uint8_t led_state;
+
+    /* Turn on LED No. 12 */
+    LEDS_TurnOn(12);
+
+    /* Turn off LED No. 12 */
+    LEDS_TurnOff(12);
+
+    /* Get LED state */
+    led_state = LEDS_GetState(12);
+
+    /* Test if LED state value is on */
+    TEST_ASSERT_EQUAL(0, led_state);
+}
 
 // //07) With all LEDs off, it must be possible to turn on all LEDs together.
 // void test_7() {
