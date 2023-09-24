@@ -1,6 +1,6 @@
 # TP N° 2
 
-Example of the use of TDD methodology in a LED driver.
+Example of the use of TDD (Test Driven Development) methodology in a LED driver.
 
 ## Repository Usage
 
