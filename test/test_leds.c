@@ -197,7 +197,7 @@ void test_query_state_of_off_LED() {
 }
 
 // 07) With all LEDs off, it must be possible to turn on all LEDs together.
-void test_turn_on_all_leds_with_all_leds_off() {
+void test_turn_on_all_leds_with_all_leds_off(void) {
 
     /* Turn on all LEDs */
     LEDS_TurnOnAll();
@@ -206,10 +206,18 @@ void test_turn_on_all_leds_with_all_leds_off() {
     TEST_ASSERT_EQUAL(65535, virtual_port);
 }
 
-// //08) With all LEDs on, it must be possible to turn off all LEDs together.
-// void test_8() {
+// 08) With all LEDs on, it must be possible to turn off all LEDs together.
+void test_turn_off_all_leds_with_all_leds_on(void) {
 
-// }
+    /* Turn on all LEDs */
+    LEDS_TurnOnAll();
+
+    /* Turn off all LEDs */
+    LEDS_TurnOffAll();
+
+    /* Test if all LEDs are on */
+    TEST_ASSERT_EQUAL(0, virtual_port);
+}
 
 // // 09) It must be possible to switch LEDs 1 and 16 on and off and to check that they have been
 // switched on and off respectively. void test_9() {

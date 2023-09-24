@@ -37,9 +37,10 @@
 #define LED_OFFSET                                                                                 \
     (1) // Offset constant to substract to LED number, as LED number starts from 1 but bits start
         // from 0
-#define LED_ON_STATE  (1) // LED value for on state
-#define LED_OFF_STATE (0) // LED value for off state
-#define ALL_LEDS_OFF  (0) // Value for all LEDs off
+#define LED_ON_STATE  (1)      // LED value for on state
+#define LED_OFF_STATE (0)      // LED value for off state
+#define ALL_LEDS_OFF  (0)      // Value for all LEDs off
+#define ALL_LEDS_ON   (0xFFFF) // Value for all LEDS on
 
 /* --- Private data type declarations ---------------------------------------------------------- */
 
@@ -98,7 +99,13 @@ uint8_t LEDS_GetState(unsigned int led) {
 void LEDS_TurnOnAll(void) {
 
     /* Turn on all LEDs */
-    *port_address |= ~(*port_address & 0);
+    *port_address = ALL_LEDS_ON;
+}
+
+void LEDS_TurnOffAll(void) {
+
+    /* Turn off all LEDs */
+    *port_address = ALL_LEDS_OFF;
 }
 
 /* --- End of file ----------------------------------------------------------------------------- */
