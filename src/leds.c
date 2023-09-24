@@ -34,6 +34,11 @@
 #include "leds.h"
 
 /* --- Macros definitions ---------------------------------------------------------------------- */
+#define LED_OFFSET                                                                                 \
+    (1) // Offset constant to substract to LED number, as LED number starts from 1 but bits start
+        // from 0
+#define LED_ON_STATE (1) // LED value for on state
+#define ALL_LEDS_OFF (0) // Value for all LEDs off
 
 /* --- Private data type declarations ---------------------------------------------------------- */
 
@@ -41,12 +46,22 @@
 static uint16_t * port_address;
 
 /* --- Private function declarations ----------------------------------------------------------- */
-
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+static uint16_t ledToMask(unsigned int led);
 /* --- Public variable definitions ------------------------------------------------------------- */
 
 /* --- Private variable definitions ------------------------------------------------------------ */
 
 /* --- Private function implementation --------------------------------------------------------- */
+static uint16_t ledToMask(unsigned int led) {
+
+    /* Return mask */
+    return (LED_ON_STATE << (led - LED_OFFSET));
+}
 
 /* --- Public function implementation ---------------------------------------------------------- */
 void LEDS_Init(uint16_t * port) {
@@ -54,19 +69,19 @@ void LEDS_Init(uint16_t * port) {
     port_address = port;
 
     /* Initialize LEDs */
-    *port = 0;
+    *port = ALL_LEDS_OFF;
 }
 
 void LEDS_TurnOn(unsigned int led) {
 
     /* Turn on LED */
-    *port_address = 1 << 4;
+    *port_address |= ledToMask(led);
 }
 
 void LEDS_TurnOff(unsigned int led) {
 
     /* Turn off LED */
-    *port_address = 0;
+    *port_address &= ~ledToMask(led);
 }
 
 /* --- End of file ----------------------------------------------------------------------------- */

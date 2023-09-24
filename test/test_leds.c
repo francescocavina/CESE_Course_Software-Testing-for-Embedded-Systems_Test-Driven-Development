@@ -112,11 +112,85 @@ void test_turn_off_lit_led(void) {
 }
 
 // 04) It must be possible to turn an LED on and off with some LEDs already on and others already
-// off. 05) It must be possible to query the status of a lit LED. 06) It must be possible to query
-// the status of an off LED. 07) With all LEDs off, it must be possible to turn on all LEDs
-// together. 08) With all LEDs on, it must be possible to turn off all LEDs together. 09) It must be
-// possible to switch LEDs 1 and 16 on and off and to check that they have been switched on and off
-// respectively. 10) LEDs should not be turned on or off if the indicated LED number is outside the
-// limits (must be between 1 and 16).
+// off.
+void test_turn_on_multiple_leds(void) {
+
+    /* Turn on LED No. 5 */
+    LEDS_TurnOn(5);
+
+    /* Turn on LED No. 3 */
+    LEDS_TurnOn(3);
+
+    /* Turn on LED No. 3 */
+    LEDS_TurnOn(3);
+
+    /* Test if LED No. 5 is on */
+    TEST_ASSERT_BIT_HIGH(4, virtual_port);
+
+    /* Test if LED No. 3 is on */
+    TEST_ASSERT_BIT_HIGH(2, virtual_port);
+}
+
+// 04) It must be possible to turn an LED on and off with some LEDs already on and others already
+// off.
+void test_turn_on_and_turn_off_multiple_leds(void) {
+
+    /* Turn on LED No. 5 */
+    LEDS_TurnOn(5);
+
+    /* Turn on LED No. 3 */
+    LEDS_TurnOn(3);
+
+    /* Turn on LED No. 3 */
+    LEDS_TurnOn(3);
+
+    /* Turn off LED No. 5 */
+    LEDS_TurnOff(5);
+
+    /* Turn off LED No. 2 */
+    LEDS_TurnOff(2);
+
+    /* Test if LED No. 5 is off */
+    TEST_ASSERT_BIT_LOW(4, virtual_port);
+
+    /* Test if LED No. 3 is on */
+    TEST_ASSERT_BIT_HIGH(2, virtual_port);
+
+    /* Test if LED No. 2 is off */
+    TEST_ASSERT_BIT_LOW(1, virtual_port);
+
+    /* Test if LED No. 3 is the only on */
+    TEST_ASSERT_BITS_LOW(~(1 << 2), virtual_port);
+}
+
+// //05) It must be possible to query the status of a lit LED.
+// void test_5() {
+
+// }
+
+// //06) It must be possible to query the status of an off LED.
+// void test_6() {
+
+// }
+
+// //07) With all LEDs off, it must be possible to turn on all LEDs together.
+// void test_7() {
+
+// }
+
+// //08) With all LEDs on, it must be possible to turn off all LEDs together.
+// void test_8() {
+
+// }
+
+// // 09) It must be possible to switch LEDs 1 and 16 on and off and to check that they have been
+// switched on and off respectively. void test_9() {
+
+// }
+
+// //10) LEDs should not be turned on or off if the indicated LED number is outside the limits (must
+// be between 1 and 16). void test_10() {
+
+// }
 
 /* --- End of file ----------------------------------------------------------------------------- */
