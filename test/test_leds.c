@@ -163,10 +163,20 @@ void test_turn_on_and_turn_off_multiple_leds(void) {
     TEST_ASSERT_BITS_LOW(~(1 << 2), virtual_port);
 }
 
-// //05) It must be possible to query the status of a lit LED.
-// void test_5() {
+// 05) It must be possible to query the status of a lit LED.
+void test_query_state_of_lit_LED(void) {
 
-// }
+    uint8_t led_state;
+
+    /* Turn on LED No. 12 */
+    LEDS_TurnOn(12);
+
+    /* Get LED state */
+    led_state = LEDS_GetState(12);
+
+    /* Test if LED state value is on */
+    TEST_ASSERT_EQUAL(1, led_state);
+}
 
 // //06) It must be possible to query the status of an off LED.
 // void test_6() {
