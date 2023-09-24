@@ -38,6 +38,7 @@
 /* --- Private data type declarations ---------------------------------------------------------- */
 
 /* --- Private variable declarations ----------------------------------------------------------- */
+static uint16_t * port_address;
 
 /* --- Private function declarations ----------------------------------------------------------- */
 
@@ -50,8 +51,15 @@
 /* --- Public function implementation ---------------------------------------------------------- */
 void LEDS_Init(uint16_t * port) {
 
+    port_address = port;
+
     /* Initialize LEDs */
     *port = 0;
+}
+
+void LEDS_TurnOn(unsigned int led) {
+
+    *port_address = 1 << 4;
 }
 
 /* --- End of file ----------------------------------------------------------------------------- */

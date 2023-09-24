@@ -51,9 +51,16 @@ extern "C" {
 /**
  * @brief
  * @param
- * @retval
+ * @retval None
  */
 void LEDS_Init(uint16_t * port);
+
+/**
+ * @brief
+ * @param
+ * @retval None
+ */
+void LEDS_TurnOn(unsigned int led);
 
 /* --- End of C++ guard ------------------------------------------------------------------------ */
 #ifdef __cplusplus
