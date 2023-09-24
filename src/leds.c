@@ -59,7 +59,14 @@ void LEDS_Init(uint16_t * port) {
 
 void LEDS_TurnOn(unsigned int led) {
 
+    /* Turn on LED */
     *port_address = 1 << 4;
+}
+
+void LEDS_TurnOff(unsigned int led) {
+
+    /* Turn off LED */
+    *port_address = 0;
 }
 
 /* --- End of file ----------------------------------------------------------------------------- */

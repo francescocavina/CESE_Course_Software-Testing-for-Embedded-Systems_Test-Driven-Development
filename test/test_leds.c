@@ -54,7 +54,7 @@
 /* --- Private data type declarations ---------------------------------------------------------- */
 
 /* --- Private variable declarations ----------------------------------------------------------- */
-
+static uint16_t virtual_port = 0xFFFF;
 /* --- Private function declarations ----------------------------------------------------------- */
 
 /* --- Public variable definitions ------------------------------------------------------------- */
@@ -64,6 +64,13 @@
 /* --- Private function implementation --------------------------------------------------------- */
 
 /* --- Public function implementation ---------------------------------------------------------- */
+
+// Set up function for all tests
+void setUp(void) {
+
+    /* Initialize LEDs */
+    LEDS_Init(&virtual_port);
+}
 
 // 01) When starting the driver, all LEDs should be off.
 void test_all_leds_start_off(void) {
@@ -81,12 +88,6 @@ void test_all_leds_start_off(void) {
 // 02) With all LEDs off, it must be possible to turn on a certain LED.
 void test_turn_on_led_with_all_leds_off(void) {
 
-    /* Define virtual memory address */
-    uint16_t virtual_port = 0xFFFF;
-
-    /* Initialize LEDs */
-    LEDS_Init(&virtual_port);
-
     /* Turn on LED No. 5 */
     LEDS_TurnOn(5);
 
@@ -98,6 +99,18 @@ void test_turn_on_led_with_all_leds_off(void) {
 }
 
 // 03) It must be possible to turn off a lit LED.
+void test_turn_off_lit_led(void) {
+
+    /* Turn on LED No. 5 */
+    LEDS_TurnOn(5);
+
+    /* Turn off LED No. 5 */
+    LEDS_TurnOff(5);
+
+    /* Test if LED No. 5 is off */
+    TEST_ASSERT_EQUAL(0, virtual_port);
+}
+
 // 04) It must be possible to turn an LED on and off with some LEDs already on and others already
 // off. 05) It must be possible to query the status of a lit LED. 06) It must be possible to query
 // the status of an off LED. 07) With all LEDs off, it must be possible to turn on all LEDs

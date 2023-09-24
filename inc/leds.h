@@ -62,6 +62,13 @@ void LEDS_Init(uint16_t * port);
  */
 void LEDS_TurnOn(unsigned int led);
 
+/**
+ * @brief
+ * @param
+ * @retval None
+ */
+void LEDS_TurnOff(unsigned int led);
+
 /* --- End of C++ guard ------------------------------------------------------------------------ */
 #ifdef __cplusplus
 }
