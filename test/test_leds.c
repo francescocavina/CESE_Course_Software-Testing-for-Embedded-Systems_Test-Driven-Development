@@ -159,7 +159,7 @@ void test_turn_on_and_turn_off_multiple_leds(void) {
     /* Test if LED No. 2 is off */
     TEST_ASSERT_BIT_LOW(1, virtual_port);
 
-    /* Test if LED No. 3 is the only on */
+    /* Test if LED No. 3 is the only one on */
     TEST_ASSERT_BITS_LOW(~(1 << 2), virtual_port);
 }
 
@@ -219,10 +219,67 @@ void test_turn_off_all_leds_with_all_leds_on(void) {
     TEST_ASSERT_EQUAL(0, virtual_port);
 }
 
-// // 09) It must be possible to switch LEDs 1 and 16 on and off and to check that they have been
-// switched on and off respectively. void test_9() {
+// 09) It must be possible to switch LEDs 1 and 16 on and off and to check that they have been
+// switched on and off respectively.
+void test_leds_1_and_16_with_function_turn_on(void) {
 
-// }
+    /* Turn on LED No. 1 */
+    LEDS_TurnOn(1);
+
+    /* Turn on LED No. 16 */
+    LEDS_TurnOn(16);
+
+    /* Test if LED No. 1 is on */
+    TEST_ASSERT_BIT_HIGH(0, virtual_port);
+
+    /* Test if LED No. 16 is on */
+    TEST_ASSERT_BIT_HIGH(15, virtual_port);
+}
+
+void test_leds_1_and_16_with_function_turn_off(void) {
+
+    /* Turn on LED No. 1 */
+    LEDS_TurnOn(1);
+
+    /* Turn on LED No. 16 */
+    LEDS_TurnOn(16);
+
+    /* Turn off LED No. 1 */
+    LEDS_TurnOff(1);
+
+    /* Turn off LED No. 16 */
+    LEDS_TurnOff(16);
+
+    /* Test if LED No. 1 is off */
+    TEST_ASSERT_BIT_LOW(0, virtual_port);
+
+    /* Test if LED No. 16 is off */
+    TEST_ASSERT_BIT_LOW(15, virtual_port);
+}
+
+void test_leds_1_and_16_with_function_get_state(void) {
+
+    uint8_t led_state_1;
+    uint8_t led_state_16;
+
+    /* Turn on LED No. 1 */
+    LEDS_TurnOn(1);
+
+    /* Turn on LED No. 16 */
+    LEDS_TurnOn(16);
+
+    /* Get LED No. 1 state */
+    led_state_1 = LEDS_GetState(1);
+
+    /* Get LED No. 16 state */
+    led_state_16 = LEDS_GetState(16);
+
+    /* Test if LED No. 1 state value is on */
+    TEST_ASSERT_EQUAL(1, led_state_1);
+
+    /* Test if LED No. 16 state value is on */
+    TEST_ASSERT_EQUAL(1, led_state_16);
+}
 
 // //10) LEDs should not be turned on or off if the indicated LED number is outside the limits (must
 // be between 1 and 16). void test_10() {
