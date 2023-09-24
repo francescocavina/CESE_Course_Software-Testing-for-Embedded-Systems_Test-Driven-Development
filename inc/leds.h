@@ -76,6 +76,13 @@ void LEDS_TurnOff(unsigned int led);
  */
 uint8_t LEDS_GetState(unsigned int led);
 
+/**
+ * @brief
+ * @param
+ * @retval
+ */
+void LEDS_TurnOnAll(void);
+
 /* --- End of C++ guard ------------------------------------------------------------------------ */
 #ifdef __cplusplus
 }

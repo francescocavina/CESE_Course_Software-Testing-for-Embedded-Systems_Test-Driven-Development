@@ -95,4 +95,10 @@ uint8_t LEDS_GetState(unsigned int led) {
     }
 }
 
+void LEDS_TurnOnAll(void) {
+
+    /* Turn on all LEDs */
+    *port_address |= ~(*port_address & 0);
+}
+
 /* --- End of file ----------------------------------------------------------------------------- */

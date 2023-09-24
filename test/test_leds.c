@@ -192,14 +192,19 @@ void test_query_state_of_off_LED() {
     /* Get LED state */
     led_state = LEDS_GetState(12);
 
-    /* Test if LED state value is on */
+    /* Test if LED state value is off */
     TEST_ASSERT_EQUAL(0, led_state);
 }
 
-// //07) With all LEDs off, it must be possible to turn on all LEDs together.
-// void test_7() {
+// 07) With all LEDs off, it must be possible to turn on all LEDs together.
+void test_turn_on_all_leds_with_all_leds_off() {
 
-// }
+    /* Turn on all LEDs */
+    LEDS_TurnOnAll();
+
+    /* Test if all LEDs are on */
+    TEST_ASSERT_EQUAL(65535, virtual_port);
+}
 
 // //08) With all LEDs on, it must be possible to turn off all LEDs together.
 // void test_8() {
