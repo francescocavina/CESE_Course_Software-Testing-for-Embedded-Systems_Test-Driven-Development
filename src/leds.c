@@ -49,9 +49,9 @@ static uint16_t * port_address;
 
 /* --- Private function declarations ----------------------------------------------------------- */
 /**
- * @brief
- * @param
- * @retval
+ * @brief  Returns a mask with bit of LED turned on.
+ * @param  No. of LED.
+ * @retval Mask.
  */
 static uint16_t ledToMask(unsigned int led);
 /* --- Public variable definitions ------------------------------------------------------------- */

@@ -49,44 +49,44 @@ extern "C" {
 
 /* --- Public function declarations ------------------------------------------------------------ */
 /**
- * @brief
- * @param
+ * @brief  Initializes LEDs port.
+ * @param  Pointer to LEDs port.
  * @retval None
  */
 void LEDS_Init(uint16_t * port);
 
 /**
- * @brief
- * @param
+ * @brief  Turns an LED on.
+ * @param  No. of LED to turn on (1 to 16).
  * @retval None
  */
 void LEDS_TurnOn(unsigned int led);
 
 /**
- * @brief
- * @param
+ * @brief  Turns an LED off.
+ * @param  No. of LED to turn off (1 to 16).
  * @retval None
  */
 void LEDS_TurnOff(unsigned int led);
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief  Returns the state of an LED.
+ * @param  No. of LED to read state.
+ * @retval State of the LED read.
  */
 uint8_t LEDS_GetState(unsigned int led);
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief  Turns all LEDs on.
+ * @param  None
+ * @retval None
  */
 void LEDS_TurnOnAll(void);
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief  Turns all LEDs off.
+ * @param  None
+ * @retval NOne
  */
 void LEDS_TurnOffAll(void);
 

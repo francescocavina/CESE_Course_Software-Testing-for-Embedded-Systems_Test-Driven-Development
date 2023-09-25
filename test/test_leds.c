@@ -34,15 +34,25 @@
  * DRIVER TESTS:
  *
  * 01) When starting the driver, all LEDs should be off.
+
  * 02) With all LEDs off, it must be possible to turn on a certain LED.
+ *
  * 03) It must be possible to turn off a lit LED.
+ *
  * 04) It must be possible to turn an LED on and off with some LEDs already on and others already
- * off. 05) It must be possible to query the status of a lit LED. 06) It must be possible to query
- * the status of an off LED. 07) With all LEDs off, it must be possible to turn on all LEDs
- * together. 08) With all LEDs on, it must be possible to turn off all LEDs together. 09) It must be
- * possible to switch LEDs 1 and 16 on and off and to check that they have been switched on and off
- * respectively. 10) LEDs should not be turned on or off if the indicated LED number is outside the
- * limits (must be between 1 and 16).
+ off.
+ *
+ * 05) It must be possible to query the status of a lit LED.
+ *
+ * 06) It must be possible to query the status of an off LED.
+ *
+ * 07) With all LEDs off, it must be possible to turn on all LEDs together.
+ *
+ * 08) With all LEDs on, it must be possible to turn off all LEDs together.
+ *
+ * 09) It must be possible to switch LEDs 1 and 16 on and off and to check that they have been
+ switched on and off respectively.
+ *
  */
 
 /* --- Headers files inclusions ---------------------------------------------------------------- */
@@ -280,10 +290,5 @@ void test_leds_1_and_16_with_function_get_state(void) {
     /* Test if LED No. 16 state value is on */
     TEST_ASSERT_EQUAL(1, led_state_16);
 }
-
-// //10) LEDs should not be turned on or off if the indicated LED number is outside the limits (must
-// be between 1 and 16). void test_10() {
-
-// }
 
 /* --- End of file ----------------------------------------------------------------------------- */
